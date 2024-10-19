@@ -70,14 +70,16 @@ const LeftSideBar = () => {
   const pathName = usePathname()
 
   return (
-    <div className="flex flex-col items-center justify-between w-full space-y-2 text-bold h-full py-5">
+    <div className="flex flex-col bg-white dark:bg-[#181819] shadow-xl items-center justify-between w-full space-y-2 font-bold h-full py-5">
       <div className="w-full flex flex-col items-center gap-3 px-4">
         {PrimaryOptions.map((option, index) => (
           <button
             key={index}
             className={cn(
-              'flex items-center gap-2 w-full space-x-3 sm:p-3 hover:bg-black hover:text-white rounded-lg',
-              pathName === option?.href ? 'sm:bg-black text-white' : 'text-black',
+              'flex items-center gap-2 w-full space-x-3 sm:p-3 hover:bg-black hover:text-white dark:hover:bg-gray-700 dark:hover:text-gray-100 rounded-lg',
+              pathName === option?.href
+                ? 'sm:bg-black text-white dark:bg-white dark:text-black'
+                : 'text-black dark:text-gray-300',
             )}
           >
             {option.svg}
@@ -86,13 +88,15 @@ const LeftSideBar = () => {
         ))}
       </div>
 
-      <div className="w-full border-t px-4 flex flex-col items-center gap-3 pt-5">
+      <div className="w-full border-t border-gray-200 dark:border-gray-700 px-4 flex flex-col items-center gap-3 pt-5">
         {SecondaryOption.map((option, index) => (
           <button
             key={index}
             className={cn(
-              'flex items-center gap-2 w-full space-x-3 sm:p-3 hover:bg-black hover:text-white text-nowrap rounded-lg',
-              pathName === option?.href ? 'bg-black text-white' : 'text-black',
+              'flex items-center gap-2 w-full space-x-3 sm:p-3 hover:bg-black hover:text-white dark:hover:bg-gray-700 dark:hover:text-gray-100 rounded-lg',
+              pathName === option?.href
+                ? 'bg-black text-white dark:bg-gray-700 dark:text-gray-100'
+                : 'text-black dark:text-gray-300',
             )}
           >
             {option.svg}

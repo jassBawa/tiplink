@@ -7,18 +7,19 @@ import { useState } from 'react'
 import LeftSideBar from './LeftSideBar'
 import ProfileDropDown from '../common/ProfileDropDown'
 import React from 'react'
+import { ModeToggle } from '../ui/darkmode'
 
 const TopBar = () => {
   const { data } = useSession()
   const [open, setOpen] = useState(false)
 
   return (
-    <div className="flex justify-between px-4 py-3 pb-6 items-center w-full">
+    <div className="flex justify-between px-4 py-3 pb-6 items-center w-full border-b dark:border-gray-500">
       <div className="flex items-center gap-5">
         {/* <Sidebar /> */}
         <AlignLeft onClick={() => setOpen(!open)} className="sm:hidden" />
         <div className="border h-10 w-10 rounded-lg inline-flex justify-center items-center flex-shrink-0">
-          <Logo className="h-8 w-8" fill="#000000" />
+          <Logo className="h-8 w-8 text-black dark:text-white" />
         </div>
       </div>
 
@@ -33,14 +34,22 @@ const TopBar = () => {
       </div>
 
       <div className="hidden sm:flex sm:w-1/2 md:w-[50%] items-center border rounded-full p-2">
-        <Search color='gray' />
-        <input className="w-full text-center outline-none" placeholder="Search" />
+        <Search color="gray" />
+        <input
+          className="w-full text-center outline-none"
+          placeholder="Search"
+        />
       </div>
-      {data && data?.user ? <ProfileDropDown /> : (
-        <div className="w-[3rem] flex items-center p-[0.2rem]  justify-center h-[2rem] transition outline-none">
-          <div className="p-4 border-2 rounded-full bg-gray-300 animate-pulse"></div>
-        </div>
-      )}
+      <div className="flex gap-2 items-center">
+        {data && data?.user ? (
+          <ModeToggle />
+        ) : (
+          <div className="w-[3rem] flex items-center p-[0.2rem]  justify-center h-[2rem] transition outline-none">
+            <div className="p-4 border-2 rounded-full bg-gray-300 animate-pulse"></div>
+          </div>
+        )}
+        <ProfileDropDown />
+      </div>
     </div>
   )
 }

@@ -6,7 +6,7 @@ interface LogoProps {
 }
 
 const Logo: React.FC<LogoProps> = ({ className, fill }) => (
-  <Link href='/'>
+  <Link href="/">
     <svg
       viewBox="0 0 120 120"
       fill="none"
@@ -17,7 +17,7 @@ const Logo: React.FC<LogoProps> = ({ className, fill }) => (
         fillRule="evenodd"
         clipRule="evenodd"
         d="M0 60C38.1371 60 60 38.1371 60 0C60 38.1371 81.8629 60 120 60C81.8629 60 60 81.8629 60 120C60 81.8629 38.1371 60 0 60Z"
-        fill={fill} // Set fill color to black
+        fill="currentColor" // Set fill color to black
       />
     </svg>
   </Link>

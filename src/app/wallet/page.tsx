@@ -18,22 +18,25 @@ const Wallet = async () => {
       },
     })
     if (user) {
-      wallet = user?.publicKey ? user.publicKey :  await createWallet(user) 
+      wallet = user?.publicKey ? user.publicKey : await createWallet(user)
       balance = await fetchUserBalance(wallet)
       console.log(balance)
     }
   }
 
-
   return (
-    <div className="h-full flex flex-col items-center">
+    <div className="h-full flex flex-col items-center bg-white dark:bg-[#181819] ">
       <TopBar />
-      <div className="flex justify-between grow w-full">
-        <div className="hidden sm:block min-w-1/5">
+      <div className="flex justify-between grow w-full transition-colors">
+        <div className="hidden sm:block min-w-1/5 border-r dark:border-slate-500">
           <LeftSideBar />
         </div>
-        <div>
-          <WalletDetail wallet={wallet} usdbalance={Number(balance?.usdBalance)} solbalance={Number(balance?.solBalance)}/>
+        <div className="flex justify-center items-center w-full py-12 bg-slate-100 dark:bg-[#11151d]">
+          <WalletDetail
+            wallet={wallet}
+            usdbalance={Number(balance?.usdBalance)}
+            solbalance={Number(balance?.solBalance)}
+          />
         </div>
         <div className=" hidden md:block">{/* <RightSideBar /> */}</div>
       </div>
